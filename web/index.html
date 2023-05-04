@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>my_chrom</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+</head>
+<body> <!--=oncontextmenu="return false" onselectstart="return false" ondragstart="return false">-->
+<br>
+<br>
+<div class="grid">
+    <div class="row">
+<div class="cell-8 offset-3">
+<h1>Welcome to yair's chrom</h1>
+    </div>
+</div>
+   <div class="row  offset-3">
+
+    <button id = "back" class="button primary cell-2" style="display:none">< back</button>
+<input id="url" class="cell-4" type="text" data-role="input" data-default-value="https://campus.gov.il" >
+<button id ="submit" type="submit" class="button primary cell-2" >submit</button>
+
+       </div>
+    <div class="row  offset-3 cell-6">
+    <div id="result">
+        hello! insert a url or word to search in google to see only the links inside and to get right to the page you need.
+        it's help my for my slowly internet. after you send url put the number of url you need...
+        if you find your wonted page click on it and go out of my chrom.
+    </div>
+
+    </div>
+    <script>
+
+        load = 'wait...<br><div data-role="progress" data-type="line"></div><div data-role="progress" data-type="line" data-small="true"></div>'
+        $("#submit").on("click", function(){
+        back =0;
+        $('#result').html(load) ;
+        document.getElementById("back").style.display = "block" ;
+        eel.go($('#url').val())(function (data){
+        $('#result').html(data);
+        });
+        });
+        $("#back").on("click", function(){
+
+        $('#result').html(load) ;
+        eel.go_back(back)(function (data){
+        $('#result').html(data);
+        back ++;
+        });
+        });
+        //alert(1);
+    </script>
+</body>
+</html>
